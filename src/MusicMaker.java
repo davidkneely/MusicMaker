@@ -1,4 +1,3 @@
-import java.security.SecureRandom;
 import java.util.Random;
 
 import javax.sound.sampled.AudioFormat;
@@ -15,57 +14,93 @@ public class MusicMaker {
 	/**
 	 * Plays a scale of music starting at A.
 	 * @param args The arguments. Not implemented.
-	 */	
+	 */
+
+  private static final int SONG_DURATION = 30;
+  private static final int REST_DURATION = 50;
+  private static final int WHOLE_NOTE_DURATION = 500;
+  private static final int MINIMUM_NOTE_DURATION = 100;
+  private static final int HALF_NOTE_DURATION = WHOLE_NOTE_DURATION /2;
+  private static final int QUARTER_NOTE_DURATION = HALF_NOTE_DURATION/2;
+
 	public static void main(String[] args) throws LineUnavailableException {
 
-		// Pick a starting key.
-		// Pick a starting note.
-		// Pick a starting feeling.
-		// Generate the plot of the piece.
-		// Have the algorithm fill in the notes between the notes.
-		
-		int songDuration = 30;
-		
-        final AudioFormat af = new AudioFormat(Note.SAMPLE_RATE, 8, 1, true, true);
-        SourceDataLine line = AudioSystem.getSourceDataLine(af);
-        line.open(af, Note.SAMPLE_RATE);
-        line.start();
-        
-        int restDuration = 100;
-        int noteDuration = 500;
+    setSongKey();
+    setSongStartNote();
+    setSongFeeling();
+    setSongPlotline();
 
-        //playScale(line, restDuration, noteDuration);
-        playRandomScale(line, restDuration, noteDuration, songDuration);
-        
-        line.drain();
-        line.close();
-    }
+    final AudioFormat af = new AudioFormat(Note.SAMPLE_RATE, 8, 1, true, true);
+    SourceDataLine line = AudioSystem.getSourceDataLine(af);
+    line.open(af, Note.SAMPLE_RATE);
+    line.start();
 
-	private static void playScale(SourceDataLine line, int restDuration, int noteDuration) {
-		for  (Note n : Note.values()) {
-            play(line, n, noteDuration);
-            play(line, Note.REST, restDuration);
-        }
-	}
-	
-	private static void playRandomScale(SourceDataLine line, int restDuration, int noteDuration, int songDuration) {
-		
-		int min = 100;
-		int max = noteDuration;
+    playRandomSong(line, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
+
+    line.drain();
+    line.close();
+  }
+
+  private static void setSongPlotline() {
+    // Generate the plot of the piece.
+  }
+
+  private static void setSongFeeling() {
+    // Pick a starting feeling.
+    // major
+    // minor
+    // tempo
+    // average space between notes
+  }
+
+  private static void setSongStartNote() {
+    // Pick a starting note.
+  }
+
+  private static void setSongKey() {
+    // Pick a starting key.
+  }
+
+  /**
+   * Plays a random song.
+   * @param line The song to be played.
+   * @param restDuration The duration of rests between notes.
+   * @param noteDuration The duration of the note.
+   * @param songDuration The duration of the song.
+   */
+  private static void playRandomSong(SourceDataLine line, int restDuration, int noteDuration, int songDuration) {
 
 		for(int i = 0; i < songDuration; i++){
 			
 			Random rand = new Random();
-			
-			int randomNum = rand.nextInt((max - min) + 1) + min;
+
+			int randomNum = rand.nextInt((noteDuration - MINIMUM_NOTE_DURATION) + 1) + MINIMUM_NOTE_DURATION;
+      //int randomNum = rand.nextInt((noteDuration - QUARTER_NOTE_DURATION) + 1) + QUARTER_NOTE_DURATION;
 			Note inputNote = randomEnum(Note.class);
 			play(line, inputNote, randomNum);
-			//randomNum = rand.nextInt((max - min) + 1) + min;
-			//play(line, Note.REST, randomNum);
 			play(line, Note.REST, restDuration);
 		}
 	}
-	
+
+  /**
+   * Plays song with randomized intervals.
+   * @param line The single note to play.
+   * @param restDuration The length of each rest.
+   * @param noteDuration The length of each note.
+   */
+  private static void playScale(SourceDataLine line, int restDuration, int noteDuration) {
+    for  (Note n : Note.values()) {
+      play(line, n, noteDuration);
+      play(line, Note.REST, restDuration);
+    }
+  }
+
+  /**
+   * Gets random element from input Enumeration.
+   * @param clazz The class of the input Enumeration.
+   * @param <T> The generic type of the input Enumeration.
+   * @return The random element of the input Enumeration.
+   */
 	public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
 		
 		Random rand = new Random();
@@ -91,6 +126,8 @@ public class MusicMaker {
  * Lists out the notes to be played.
  */
 enum Note {
+
+  // TODO: Find out how to set these tones at good sounding intervals so they all confirm to a key.
 
     REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
     public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
@@ -122,6 +159,10 @@ enum Note {
 
 /*
  * TODO:
+ * Cycle of fifths
+ *   perfect cycle of fifths == 12 notes
+ *   diatonic cycle of fifths == major/minor scales
+ *
  * 
  * Create melodies based on the circle of fifths.
  * 
