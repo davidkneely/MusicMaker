@@ -1,3 +1,6 @@
+import java.security.SecureRandom;
+import java.util.Random;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
@@ -6,9 +9,33 @@ import javax.sound.sampled.SourceDataLine;
 /*
  * TODO:
  * 
- * Update code with method to import random patterns.
- * Remove constants from code.
+ * Create melodies based on the circle of fifths.
  * 
+ *   Determine common patterns based on the fifths. eg. Twinkle Twinkle Little Star.
+ *   
+ * List out all the proper notes based on each scale.
+ * 
+ *   Remove constants from code.
+ * 
+ * Importing patterns:
+ * 
+ *   Create method to import random patterns.
+ * 
+ * Future updates:
+ * 
+ *   Filters and envelopes
+ *   Eventually would like to support some different kinds of tones.
+ *   Attack
+ *   Release
+ *   Sustain
+ *   Decay
+ *   Hook code to Ableton or Logic to utilize the synth engine.
+ * 
+ * Import different kinds of source formats:
+ * 
+ *   File formats
+ *   Weather patterns
+ *   Words
  */
 
 /*
@@ -23,23 +50,72 @@ import javax.sound.sampled.SourceDataLine;
  * @author David Neely
  */
 public class MusicMaker {
+	
+	
 
 	/**
 	 * Plays a scale of music starting at A.
 	 * @param args The arguments. Not implemented.
 	 */	
 	public static void main(String[] args) throws LineUnavailableException {
+		
+		
+		
+		// Pick a starting key.
+		// Pick a starting note.
+		// Pick a starting feeling.
+		// Generate the plot of the piece.
+		// Have the algorithm fill in the notes between the notes.
+		
         final AudioFormat af = new AudioFormat(Note.SAMPLE_RATE, 8, 1, true, true);
         SourceDataLine line = AudioSystem.getSourceDataLine(af);
         line.open(af, Note.SAMPLE_RATE);
         line.start();
-        for  (Note n : Note.values()) {
-            play(line, n, 500);
-            play(line, Note.REST, 10);
-        }
+        
+        int restDuration = 100;
+        int noteDuration = 500;
+
+        //playScale(line, restDuration, noteDuration);
+        playRandomScale(line, restDuration, noteDuration);
+        
         line.drain();
         line.close();
     }
+
+	private static void playScale(SourceDataLine line, int restDuration, int noteDuration) {
+		for  (Note n : Note.values()) {
+            play(line, n, noteDuration);
+            play(line, Note.REST, restDuration);
+        }
+	}
+	
+	private static void playRandomScale(SourceDataLine line, int restDuration, int noteDuration) {
+
+		int songDuration = 10;
+		
+		int min = 1;
+		int max = noteDuration;
+
+		for(int i = 0; i < songDuration; i++){
+			
+			Random rand = new Random();
+			
+			int randomNum = rand.nextInt((max - min) + 1) + min;
+			Note inputNote = Note.A4;
+			Note inputNote2 = randomEnum(Note.class);
+			play(line, inputNote2, randomNum);
+			randomNum = rand.nextInt((max - min) + 1) + min;
+			play(line, Note.REST, randomNum);
+		}
+	}
+	
+	public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
+		
+		Random rand = new Random();
+        int x = rand.nextInt(clazz.getEnumConstants().length);
+        return clazz.getEnumConstants()[x];
+    }
+	
 	/**
 	 * Plays the melody.
 	 * @param line The entire melody to be played.
@@ -50,13 +126,12 @@ public class MusicMaker {
         ms = Math.min(ms, Note.SECONDS * 1000);
         int length = Note.SAMPLE_RATE * ms / 1000;
         int count = line.write(note.data(), 0, length);
+        
     }
 
 }
 /**
  * Lists out the notes to be played.
- * @author David Neely
- *
  */
 enum Note {
 
