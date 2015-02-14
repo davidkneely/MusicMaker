@@ -6,50 +6,11 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-/*
- * TODO:
- * 
- * Create melodies based on the circle of fifths.
- * 
- *   Determine common patterns based on the fifths. eg. Twinkle Twinkle Little Star.
- *   
- * List out all the proper notes based on each scale.
- * 
- *   Remove constants from code.
- * 
- * Importing patterns:
- * 
- *   Create method to import random patterns.
- * 
- * Future updates:
- * 
- *   Filters and envelopes
- *   Eventually would like to support some different kinds of tones.
- *   Attack
- *   Release
- *   Sustain
- *   Decay
- *   Hook code to Ableton or Logic to utilize the synth engine.
- * 
- * Import different kinds of source formats:
- * 
- *   File formats
- *   Weather patterns
- *   Words
- *
- * Cited Sources:
- * 
- * http://stackoverflow.com/questions/7782721/java-raw-audio-output/7782749#7782749
- * http://stackoverflow.com/questions/2064066/does-java-have-built-in-libraries-for-audio-synthesis/2065693#2065693
- */
-
 /**
  * Generates random music with Java Sound API.
  * @author David Neely
  */
 public class MusicMaker {
-	
-	
 
 	/**
 	 * Plays a scale of music starting at A.
@@ -89,7 +50,7 @@ public class MusicMaker {
 	
 	private static void playRandomScale(SourceDataLine line, int restDuration, int noteDuration, int songDuration) {
 		
-		int min = 10;
+		int min = 100;
 		int max = noteDuration;
 
 		for(int i = 0; i < songDuration; i++){
@@ -157,3 +118,43 @@ enum Note {
         return sin;
     }
 }
+
+
+/*
+ * TODO:
+ * 
+ * Create melodies based on the circle of fifths.
+ * 
+ *   Determine common patterns based on the fifths. eg. Twinkle Twinkle Little Star.
+ *   Set patterns to correspond to.
+ *   	Intervals that need to be stuck to in order for the song to be recognizable.
+ *   
+ * List out all the proper notes based on each scale.
+ * 
+ *   Remove constants from code.
+ * 
+ * Importing patterns:
+ * 
+ *   Create method to import random patterns.
+ * 
+ * Future updates:
+ * 
+ *   Filters and envelopes
+ *   Eventually would like to support some different kinds of tones.
+ *   Attack
+ *   Release
+ *   Sustain
+ *   Decay
+ *   Hook code to Ableton or Logic to utilize the synth engine.
+ * 
+ * Import different kinds of source formats:
+ * 
+ *   File formats
+ *   Weather patterns
+ *   Words
+ *
+ * Cited Sources:
+ * 
+ * http://stackoverflow.com/questions/7782721/java-raw-audio-output/7782749#7782749
+ * http://stackoverflow.com/questions/2064066/does-java-have-built-in-libraries-for-audio-synthesis/2065693#2065693
+ */
