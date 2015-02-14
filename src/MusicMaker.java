@@ -36,9 +36,7 @@ import javax.sound.sampled.SourceDataLine;
  *   File formats
  *   Weather patterns
  *   Words
- */
-
-/*
+ *
  * Cited Sources:
  * 
  * http://stackoverflow.com/questions/7782721/java-raw-audio-output/7782749#7782749
@@ -58,14 +56,14 @@ public class MusicMaker {
 	 * @param args The arguments. Not implemented.
 	 */	
 	public static void main(String[] args) throws LineUnavailableException {
-		
-		
-		
+
 		// Pick a starting key.
 		// Pick a starting note.
 		// Pick a starting feeling.
 		// Generate the plot of the piece.
 		// Have the algorithm fill in the notes between the notes.
+		
+		int songDuration = 30;
 		
         final AudioFormat af = new AudioFormat(Note.SAMPLE_RATE, 8, 1, true, true);
         SourceDataLine line = AudioSystem.getSourceDataLine(af);
@@ -76,7 +74,7 @@ public class MusicMaker {
         int noteDuration = 500;
 
         //playScale(line, restDuration, noteDuration);
-        playRandomScale(line, restDuration, noteDuration);
+        playRandomScale(line, restDuration, noteDuration, songDuration);
         
         line.drain();
         line.close();
@@ -89,11 +87,9 @@ public class MusicMaker {
         }
 	}
 	
-	private static void playRandomScale(SourceDataLine line, int restDuration, int noteDuration) {
-
-		int songDuration = 10;
+	private static void playRandomScale(SourceDataLine line, int restDuration, int noteDuration, int songDuration) {
 		
-		int min = 1;
+		int min = 10;
 		int max = noteDuration;
 
 		for(int i = 0; i < songDuration; i++){
@@ -101,11 +97,11 @@ public class MusicMaker {
 			Random rand = new Random();
 			
 			int randomNum = rand.nextInt((max - min) + 1) + min;
-			Note inputNote = Note.A4;
-			Note inputNote2 = randomEnum(Note.class);
-			play(line, inputNote2, randomNum);
-			randomNum = rand.nextInt((max - min) + 1) + min;
-			play(line, Note.REST, randomNum);
+			Note inputNote = randomEnum(Note.class);
+			play(line, inputNote, randomNum);
+			//randomNum = rand.nextInt((max - min) + 1) + min;
+			//play(line, Note.REST, randomNum);
+			play(line, Note.REST, restDuration);
 		}
 	}
 	
@@ -117,7 +113,7 @@ public class MusicMaker {
     }
 	
 	/**
-	 * Plays the melody.
+	 * Plays the input Note.
 	 * @param line The entire melody to be played.
 	 * @param note The note to be added to the melody.
 	 * @param ms The duration of the note.
