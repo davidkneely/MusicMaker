@@ -1,0 +1,63 @@
+// Cycle of fifths
+
+Perfect cycle of fifths
+goes down a perfect fifth every time.
+goes through all 12 chords on the keyboard (hardly ever used)
+C F Bb Eb Ab Db Gb B E A D G C
+Diatonic cycle of fifths (major or minor)
+popular and classical music
+Go down a fifth every time but keep in the major or minor scale you are in.
+C minor scale
+  C D Eb F G Ab Bb
+Diatonic cycle of fifths:
+  Cm Fm Bb Eb Ab Ddim G7 Cm
+All chords are counting up by thirds
+
+Building triads off of a scale.
+
+Advantage of cycle of fifths
+diatonic is 7 notes in the scale
+
+8 bar phrases
+diatonic cycle of fifths is 7 notes
+  fills up time
+  one chord sustained for each bar.
+  double the one chord
+    twice at the end
+    start with the one chord and end with the 1 cord.
+
+melodic phrase that goes over two chords.
+then transpose the phrase over the other chords.
+
+jazz chord progression
+  2 5 1
+  works in major or minor.
+
+another jazz chord progression
+  6 2 5 1
+
+jazz diatonic
+  7 chord sequence
+  add 7ths 9ths 11ths 13ths
+  sounds more harmonically rich
+
+make them sound more interesting
+  add notes outside the scale of c minor
+  flat ninths
+
+alter your extended notes to get out of the scale
+
+extending the cycle of fifths
+  patterns.
+
+substitude dominant 7ths with a tritone away
+  Cm7, instead of Fdom7, paly a Bdom7
+  chromatic moving bass line going down.
+
+final pattern. BEST ONE
+  series of 2 5 1s
+
+keeps people's ears captivated for it to resolve.
+keeps people listening for the duration of the chord progression.
+
+dave brubeck's take five is an example of this.

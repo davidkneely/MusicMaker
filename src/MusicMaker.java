@@ -1,5 +1,5 @@
+import java.util.ArrayList;
 import java.util.Random;
-
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
@@ -11,18 +11,19 @@ import javax.sound.sampled.SourceDataLine;
  */
 public class MusicMaker {
 
-	/**
-	 * Plays a scale of music starting at A.
-	 * @param args The arguments. Not implemented.
-	 */
-
   private static final int SONG_DURATION = 30;
   private static final int REST_DURATION = 50;
   private static final int WHOLE_NOTE_DURATION = 500;
   private static final int MINIMUM_NOTE_DURATION = 100;
   private static final int HALF_NOTE_DURATION = WHOLE_NOTE_DURATION /2;
   private static final int QUARTER_NOTE_DURATION = HALF_NOTE_DURATION/2;
+  private static final int EIGTH_NOTE_DURATION = QUARTER_NOTE_DURATION/2;
+  private static final int SIXTEENTH_NOTE_DURATION = EIGTH_NOTE_DURATION/2;
 
+  /**
+   * Plays a scale of music starting at A.
+   * @param args The arguments. Not implemented.
+   */
 	public static void main(String[] args) throws LineUnavailableException {
 
     setSongKey();
@@ -30,16 +31,52 @@ public class MusicMaker {
     setSongFeeling();
     setSongPlotline();
 
+    ArrayList<Note> aMajorScale = createAMajorScale();
+    ArrayList<Note> cMajorScale = createCMajorScale();
+
     final AudioFormat af = new AudioFormat(Note.SAMPLE_RATE, 8, 1, true, true);
     SourceDataLine line = AudioSystem.getSourceDataLine(af);
     line.open(af, Note.SAMPLE_RATE);
     line.start();
 
-    playRandomSong(line, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
+    playRandomSong(line, aMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
+    //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
+    //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
 
     line.drain();
     line.close();
   }
+
+  private static ArrayList<Note> createAMajorScale() {
+    ArrayList<Note> notesCMajorScale = new ArrayList<Note>();
+    notesCMajorScale.add(Note.A4);
+    notesCMajorScale.add(Note.B4);
+    notesCMajorScale.add(Note.C4);
+    notesCMajorScale.add(Note.D4);
+    notesCMajorScale.add(Note.E4);
+    notesCMajorScale.add(Note.F4);
+    notesCMajorScale.add(Note.G4);
+    notesCMajorScale.add(Note.A5);
+    return notesCMajorScale;
+  }
+
+  private static ArrayList<Note> createCMajorScale() {
+
+    // 7 diatonic triads in any major key
+    // Major, Minor, Minor, Major, Major, Minor, Diminished, Major
+    // tonic, super tonic, median, sub dominant, dominant, sub median, leading tone, tonic
+
+    ArrayList<Note> notesCMajorScale = new ArrayList<Note>();
+    notesCMajorScale.add(Note.C4);
+    notesCMajorScale.add(Note.D4);
+    notesCMajorScale.add(Note.E4);
+    notesCMajorScale.add(Note.F4);
+    notesCMajorScale.add(Note.G4);
+    notesCMajorScale.add(Note.A5);
+    notesCMajorScale.add(Note.B4); // goes down one octave, need to create more notes in the root notes.
+    return notesCMajorScale;
+  }
+
 
   private static void setSongPlotline() {
     // Generate the plot of the piece.
@@ -68,19 +105,26 @@ public class MusicMaker {
    * @param noteDuration The duration of the note.
    * @param songDuration The duration of the song.
    */
-  private static void playRandomSong(SourceDataLine line, int restDuration, int noteDuration, int songDuration) {
+  private static void playRandomSong(SourceDataLine line, ArrayList<Note> inputScale, int restDuration, int noteDuration, int songDuration) {
 
 		for(int i = 0; i < songDuration; i++){
 			
 			Random rand = new Random();
 
 			int randomNum = rand.nextInt((noteDuration - MINIMUM_NOTE_DURATION) + 1) + MINIMUM_NOTE_DURATION;
-      //int randomNum = rand.nextInt((noteDuration - QUARTER_NOTE_DURATION) + 1) + QUARTER_NOTE_DURATION;
-			Note inputNote = randomEnum(Note.class);
+			Note inputNote = getRandomElementFromList(inputScale);
 			play(line, inputNote, randomNum);
 			play(line, Note.REST, restDuration);
 		}
 	}
+
+  private static Note getRandomElementFromList(ArrayList<Note> inputArrayList) {
+    Note returnNote;
+    Random randomGenerator = new Random();
+    int index = randomGenerator.nextInt(inputArrayList.size());
+    returnNote = inputArrayList.get(index);
+    return returnNote;
+  }
 
   /**
    * Plays song with randomized intervals.
@@ -94,6 +138,10 @@ public class MusicMaker {
       play(line, Note.REST, restDuration);
     }
   }
+
+
+
+
 
   /**
    * Gets random element from input Enumeration.
