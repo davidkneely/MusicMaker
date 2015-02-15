@@ -156,6 +156,12 @@ enum Note {
 
 enum NotesCMajor {
 
+  /*
+  Notes: 	C • D • E • F • G • A • B
+  Diatonic Triads: 	C • Dm • Em • F • G • Am • Bdim
+  Relative Minor: 	A Minor
+  */
+
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
   public static final int SECONDS = 2;
@@ -184,6 +190,12 @@ enum NotesCMajor {
 }
 
 enum NotesGMajor {
+
+  /*
+  Notes: 	G • A • B • C • D • E • F
+  Diatonic Triads: 	G • Am • Bm • C • D • Em • F#dim
+  Relative Minor: 	E Minor
+  */
 
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
@@ -214,6 +226,12 @@ enum NotesGMajor {
 
 enum NotesDMajor {
 
+  /*
+  Notes: 	D • E • F • G • A • B • C
+  Diatonic Triads: 	D • Em • F#m • G • A • Bm • C#dim
+  Relative Minor: 	B Minor
+  */
+
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
   public static final int SECONDS = 2;
@@ -242,6 +260,12 @@ enum NotesDMajor {
 }
 
 enum NotesAMajor {
+
+  /*
+  Notes: 	A • B • C • D • E • F • G
+  Diatonic Triads: 	A • Bm • C#m • D • E • F#m • G#dim
+  Relative Minor: 	F Minor
+  */
 
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
@@ -272,6 +296,12 @@ enum NotesAMajor {
 
 enum NotesEMajor {
 
+  /*
+  Notes: 	E • F • G • A • B • C • D
+  Diatonic Triads: 	E • F#m • G#m • A • B • C#m • D#dim
+  Relative Minor: 	C Minor
+  */
+
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
   public static final int SECONDS = 2;
@@ -300,6 +330,12 @@ enum NotesEMajor {
 }
 
 enum NotesBMajor {
+
+  /*
+  Notes: 	B • C • D • E • F • G • A
+  Diatonic Triads: 	B • C#m • D#m • E • F# • G#m • A#dim
+  Relative Minor: 	G Minor
+  */
 
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
@@ -330,6 +366,12 @@ enum NotesBMajor {
 
 enum NotesFSharpMajor {
 
+  /*
+  Notes: 	F • G • A • B • C • D • E
+  Diatonic Triads: 	F# • G#m • A#m • B • C# • D#m • E#dim
+  Relative Minor: 	D Minor
+  */
+
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
   public static final int SECONDS = 2;
@@ -358,6 +400,12 @@ enum NotesFSharpMajor {
 }
 
 enum NotesDFlatMajor {
+
+  /*
+  Notes: 	D • E • F • G • A • B • C
+  Diatonic Triads: 	Db • Ebm • Fm • Gb • Ab • Bbm • Cdim
+  Relative Minor: 	B Minor
+  */
 
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
@@ -388,6 +436,12 @@ enum NotesDFlatMajor {
 
 enum NotesAFlatMajor {
 
+  /*
+  Notes: 	A • B • C • D • E • F • G
+  Diatonic Triads: 	Ab • Bbm • Cm • Db • Eb • Fm • Gdim
+  Relative Minor: 	F Minor
+  */
+
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
   public static final int SECONDS = 2;
@@ -416,6 +470,12 @@ enum NotesAFlatMajor {
 }
 
 enum NotesEFlatMajor {
+
+  /*
+  Notes: 	E • F • G • A • B • C • D
+  Diatonic Triads: 	Eb • Fm • Gm • Ab • Bb • Cm • Ddim
+  Relative Minor: 	C Minor
+  */
 
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
@@ -446,6 +506,12 @@ enum NotesEFlatMajor {
 
 enum NotesBFlatMajor {
 
+  /*
+  Notes: 	B • C • D • E • F • G • A
+  Diatonic Triads: 	Bb • Cm • Dm • Eb • F • Gm • Adim
+  Relative Minor: 	G Minor
+  */
+
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
   public static final int SECONDS = 2;
@@ -474,6 +540,12 @@ enum NotesBFlatMajor {
 }
 
 enum NotesFMajor {
+
+  /*
+  Notes: 	F • G • A • B • C • D • E
+  Diatonic Triads: 	F • Gm • Am • Bb • C • Dm • Edim
+  Relative Minor: 	D Minor
+  */
 
   REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
   public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
