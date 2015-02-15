@@ -127,8 +127,6 @@ public class MusicMaker {
  */
 enum Note {
 
-  // TODO: Find out how to set these tones at good sounding intervals so they all confirm to a key.
-
     REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
     public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
     public static final int SECONDS = 2;
@@ -156,6 +154,353 @@ enum Note {
     }
 }
 
+enum NotesCMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesCMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesGMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesGMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesDMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesDMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesAMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesAMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesEMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesEMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesBMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesBMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesFSharpMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesFSharpMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesDFlatMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesDFlatMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesAFlatMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesAFlatMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesEFlatMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesEFlatMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesBFlatMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesBFlatMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
+
+enum NotesFMajor {
+
+  REST, A4, A4$, B4, C4, C4$, D4, D4$, E4, F4, F4$, G4, G4$, A5;
+  public static final int SAMPLE_RATE = 16 * 1024; // ~16KHz
+  public static final int SECONDS = 2;
+  private byte[] sin = new byte[SECONDS * SAMPLE_RATE];
+
+  NotesFMajor() {
+    int n = this.ordinal();
+    if (n > 0) {
+      double exp = ((double) n - 1) / 12d;
+      double f = 440d * Math.pow(2d, exp);
+      for (int i = 0; i < sin.length; i++) {
+        double period = (double)SAMPLE_RATE / f;
+        double angle = 2.0 * Math.PI * i / period;
+        sin[i] = (byte)(Math.sin(angle) * 127f);
+      }
+    }
+  }
+
+  /**
+   * The individual note to be played.
+   * @return The sin wave.
+   */
+  public byte[] data() {
+    return sin;
+  }
+}
 
 /*
  * TODO:
