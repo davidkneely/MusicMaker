@@ -1,4 +1,4 @@
-// Cycle of fifths
+// CYCLE OF FIFTHS
 
 Perfect cycle of fifths
 goes down a perfect fifth every time.
@@ -61,3 +61,8 @@ keeps people's ears captivated for it to resolve.
 keeps people listening for the duration of the chord progression.
 
 dave brubeck's take five is an example of this.
+
+
+// FUTURE PLANNING:
+
+In the future I'd like this player to be able to change keys in the middle of the composition.
