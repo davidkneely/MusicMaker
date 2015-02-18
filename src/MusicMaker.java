@@ -42,9 +42,14 @@ public class MusicMaker {
     playRandomSong(line, aMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
+    createLoop();
 
     line.drain();
     line.close();
+  }
+
+  private static void createLoop(){
+    // creates loop to make some repetition in the melody to make it recoognizable.
   }
 
   private static ArrayList<Note> createAMajorScale() {
