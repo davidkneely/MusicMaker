@@ -44,51 +44,55 @@ public class MusicMaker {
     //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
 
-    for(Note note: createLoop(cMajorScale)){
-      play(line, note, THIRTYSECOND_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: createLoop(cMajorScale)){
+    ArrayList<Note> loopX = new ArrayList<>(createLoop(aMajorScale));
+    ArrayList<Note> loopY = new ArrayList<>(createLoop(aMajorScale));
+    ArrayList<Note> loopZ = new ArrayList<>(createLoop(aMajorScale));
+
+    for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
-      play(line, note, THIRTYSECOND_NOTE_DURATION);
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
       play(line, note, HALF_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopY){
       play(line, note, HALF_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopY){
       play(line, note, SIXTEENTH_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopZ){
       play(line, note, SIXTEENTH_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopZ){
       play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopZ){
       play(line, note, SIXTEENTH_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
-    for(Note note: createLoop(cMajorScale)){
+    for(Note note: loopZ){
       play(line, note, SIXTEENTH_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
