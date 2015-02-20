@@ -19,6 +19,7 @@ public class MusicMaker {
   private static final int QUARTER_NOTE_DURATION = HALF_NOTE_DURATION/2;
   private static final int EIGTH_NOTE_DURATION = QUARTER_NOTE_DURATION/2;
   private static final int SIXTEENTH_NOTE_DURATION = EIGTH_NOTE_DURATION/2;
+  private static final int THIRTYSECOND_NOTE_DURATION = SIXTEENTH_NOTE_DURATION/2;
 
   /**
    * Plays a scale of music starting at A.
@@ -39,17 +40,88 @@ public class MusicMaker {
     line.open(af, Note.SAMPLE_RATE);
     line.start();
 
-    playRandomSong(line, aMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
+    //playRandomSong(line, aMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
-    createLoop();
+
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, THIRTYSECOND_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, THIRTYSECOND_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, HALF_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, HALF_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: createLoop(cMajorScale)){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+
 
     line.drain();
     line.close();
   }
 
-  private static void createLoop(){
-    // creates loop to make some repetition in the melody to make it recoognizable.
+//  private static void playLoop(ArrayList<Note> inputArray) {
+//
+//    for(Note note: inputArray){
+//      play(line, inputNote, randomNum);
+//      play(line, Note.REST, restDuration);
+//    }
+//
+//  }
+  private static ArrayList<Note> createLoop(ArrayList<Note> inputArray){
+
+    // populate a random array
+    ArrayList<Note> patternNotes = new ArrayList<>();
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+
+    return  patternNotes;
+
+
   }
 
   private static ArrayList<Note> createAMajorScale() {
