@@ -5,6 +5,11 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+
+// command to stop current loop.
+// play diffrent song.
+
+
 /**
  * Generates random music with Java Sound API.
  * @author David Neely
@@ -12,8 +17,8 @@ import javax.sound.sampled.SourceDataLine;
 public class MusicMaker {
 
   private static final int SONG_DURATION = 30;
-  private static final int REST_DURATION = 50;
-  private static final int WHOLE_NOTE_DURATION = 500;
+  private static final int REST_DURATION = 0;
+  private static final int WHOLE_NOTE_DURATION = 40000;
   private static final int MINIMUM_NOTE_DURATION = 100;
   private static final int HALF_NOTE_DURATION = WHOLE_NOTE_DURATION /2;
   private static final int QUARTER_NOTE_DURATION = HALF_NOTE_DURATION/2;
@@ -61,7 +66,7 @@ public class MusicMaker {
       play(line, Note.REST, REST_DURATION);
     }
     for(Note note: loopY){
-      play(line, note, HALF_NOTE_DURATION);
+      play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
     for(Note note: loopX){
@@ -73,11 +78,11 @@ public class MusicMaker {
       play(line, Note.REST, REST_DURATION);
     }
     for(Note note: loopY){
-      play(line, note, HALF_NOTE_DURATION);
+      play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
     for(Note note: loopY){
-      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, note, QUARTER_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
     for(Note note: loopZ){
@@ -93,9 +98,106 @@ public class MusicMaker {
       play(line, Note.REST, REST_DURATION);
     }
     for(Note note: loopZ){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
       play(line, note, SIXTEENTH_NOTE_DURATION);
       play(line, Note.REST, REST_DURATION);
     }
+    for(Note note: loopY){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+
 
 
     line.drain();
@@ -192,7 +294,7 @@ public class MusicMaker {
 			
 			Random rand = new Random();
 
-			int randomNum = rand.nextInt((noteDuration - MINIMUM_NOTE_DURATION) + 1) + MINIMUM_NOTE_DURATION;
+			int randomNum = rand.nextInt((noteDuration - THIRTYSECOND_NOTE_DURATION) + 1) + THIRTYSECOND_NOTE_DURATION;
 			Note inputNote = getRandomElementFromList(inputScale);
 			play(line, inputNote, randomNum);
 			play(line, Note.REST, restDuration);
