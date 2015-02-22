@@ -8,6 +8,11 @@ import javax.sound.sampled.SourceDataLine;
 // command to stop current loop.
 // play diffrent song.
 
+// would like to hook this up to the global happiness project.
+// global consciousness project.
+// feed in random ints from those sensors.
+// see what kind of songs those random ints made...
+
 
 /**
  * Generates random music with Java Sound API.
@@ -409,17 +414,17 @@ public class MusicMaker {
   private static ArrayList<Note> createLoop(ArrayList<Note> inputArray){
 
     // populate a random array
-    ArrayList<Note> patternNotes = new ArrayList<>();
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
+    ArrayList<Note> returnArrayPatternNotes = new ArrayList<>();
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
 
-    return  patternNotes;
+    return  returnArrayPatternNotes;
 
 
   }
@@ -427,17 +432,17 @@ public class MusicMaker {
   private static ArrayList<Note> createLoopTimes(ArrayList<Note> inputArray){
 
     // populate a random array
-    ArrayList<Note> patternNotes = new ArrayList<>();
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
-    patternNotes.add(getRandomElementFromList(inputArray));
+    ArrayList<Note> returnArrayPatternNotes = new ArrayList<>();
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
+    returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
 
-    return  patternNotes;
+    return  returnArrayPatternNotes;
 
 
   }
