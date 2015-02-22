@@ -13,6 +13,9 @@ import javax.sound.sampled.SourceDataLine;
 // feed in random ints from those sensors.
 // see what kind of songs those random ints made...
 
+// another idea to make the program listen to popular music to analyze the note structures that got the most virality.
+// ... creation of the perfectly derivative pop song.
+
 
 /**
  * Generates random music with Java Sound API.
