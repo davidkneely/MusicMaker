@@ -68,7 +68,9 @@ public class MusicMaker {
     //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
 
-    createMelody(aMajorScale, line);
+  for(int i = 10; i < 20; i++){
+      createMelody(aMajorScale, line);
+    }
     //createMelody002(aMajorScale, line);
 
     // maybe add in some standard drum beat???
