@@ -5,7 +5,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-
 // command to stop current loop.
 // play diffrent song.
 
@@ -16,28 +15,25 @@ import javax.sound.sampled.SourceDataLine;
  */
 public class MusicMaker {
 
-  // will making the range of notes larger make the piece feel pschitzo?
-  // I want three ocatves of range as the input.
-
-  private static final int SONG_DURATION = 30;
-  private static final int REST_DURATION = 0;
-  public static final int SECOND_DURATION = 5000;
-  public static final float TEMPORAL_RATIO = 0.5f;
-  private static final int WHOLE_NOTE_DURATION = Integer.valueOf((int) (SECOND_DURATION/TEMPORAL_RATIO));
-  private static final int HALF_NOTE_DURATION = WHOLE_NOTE_DURATION /2;
-  private static final int QUARTER_NOTE_DURATION = HALF_NOTE_DURATION/2;
-  private static final int EIGTH_NOTE_DURATION = QUARTER_NOTE_DURATION/2;
-  private static final int SIXTEENTH_NOTE_DURATION = EIGTH_NOTE_DURATION/2;
-  private static final int THIRTYSECOND_NOTE_DURATION = SIXTEENTH_NOTE_DURATION/2;
+  private static final float SONG_DURATION = 30;
+  private static final float REST_DURATION = 0;
+  public static final float SECOND_DURATION = 1000;
+  public static final float TEMPORAL_RATIO = 0.9f;
+  private static final float WHOLE_NOTE_DURATION = Integer.valueOf((int) (SECOND_DURATION/TEMPORAL_RATIO));
+  private static final float HALF_NOTE_DURATION = WHOLE_NOTE_DURATION /2;
+  private static final float QUARTER_NOTE_DURATION = HALF_NOTE_DURATION/2;
+  private static final float EIGTH_NOTE_DURATION = QUARTER_NOTE_DURATION/2;
+  private static final float SIXTEENTH_NOTE_DURATION = EIGTH_NOTE_DURATION/2;
+  private static final float THIRTYSECOND_NOTE_DURATION = SIXTEENTH_NOTE_DURATION/2;
 
   // Just hung out with Kyle and demo'd the output.
 
-  // He suggested updating the track to support "Beats on the Seconds. 60 second timer. Not on a boring 60 seconds."
+  // He suggested updating the track to support "Beats on the Seconds. 60 second timer. Not a boring 60 seconds."
 
   // Ideas of generated toward making this player
   // Polyphonic to cluster sound rashes
   // Against the main melody at a lower volume.
-  // like fractals.
+  // like
   // but with more subtlety?
 
   /**
@@ -53,6 +49,7 @@ public class MusicMaker {
 
     ArrayList<Note> aMajorScale = createAMajorScale();
     ArrayList<Note> cMajorScale = createCMajorScale();
+    ArrayList<Float> noteTimes = createNoteTimes();
 
     final AudioFormat af = new AudioFormat(Note.SAMPLE_RATE, 8, 1, true, true);
     SourceDataLine line = AudioSystem.getSourceDataLine(af);
@@ -63,162 +60,345 @@ public class MusicMaker {
     //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
 
-    ArrayList<Note> loopX = new ArrayList<>(createLoop(aMajorScale));
-    ArrayList<Note> loopY = new ArrayList<>(createLoop(aMajorScale));
-    ArrayList<Note> loopZ = new ArrayList<>(createLoop(aMajorScale));
+    createMelody(aMajorScale, line);
+    //createMelody002(aMajorScale, line);
 
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopZ){
-      play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopZ){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopZ){
-      play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopZ){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopX){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-    for(Note note: loopY){
-      play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
-    }
-
-
+    // maybe add in some standard drum beat???
 
     line.drain();
     line.close();
   }
 
-//  private static void playLoop(ArrayList<Note> inputArray) {
+  private static void createMelody(ArrayList<Note> aMajorScale, SourceDataLine line) {
+    ArrayList<Note> loopX = new ArrayList<>(createLoop(aMajorScale));
+    ArrayList<Note> loopY = new ArrayList<>(createLoop(aMajorScale));
+    ArrayList<Note> loopZ = new ArrayList<>(createLoop(aMajorScale));
+
+    // added length variable
+    //float QUARTER_NOTE_DURATION = 100;
+
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+  }
+
+  private static void createMelody002(ArrayList<Note> aMajorScale, SourceDataLine line) {
+    ArrayList<Note> loopX = new ArrayList<>(createLoop(aMajorScale));
+    ArrayList<Note> loopY = new ArrayList<>(createLoop(aMajorScale));
+    ArrayList<Note> loopZ = new ArrayList<>(createLoop(aMajorScale));
+
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopZ){
+      play(line, note, SIXTEENTH_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopX){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+    for(Note note: loopY){
+      play(line, note, QUARTER_NOTE_DURATION);
+      play(line, Note.REST, REST_DURATION);
+    }
+  }
+
+  //  private static void playLoop(ArrayList<Note> inputArray) {
 //
 //    for(Note note: inputArray){
 //      play(line, inputNote, randomNum);
@@ -227,6 +407,24 @@ public class MusicMaker {
 //
 //  }
   private static ArrayList<Note> createLoop(ArrayList<Note> inputArray){
+
+    // populate a random array
+    ArrayList<Note> patternNotes = new ArrayList<>();
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+    patternNotes.add(getRandomElementFromList(inputArray));
+
+    return  patternNotes;
+
+
+  }
+
+  private static ArrayList<Note> createLoopTimes(ArrayList<Note> inputArray){
 
     // populate a random array
     ArrayList<Note> patternNotes = new ArrayList<>();
@@ -255,6 +453,16 @@ public class MusicMaker {
     notesCMajorScale.add(Note.G4);
     notesCMajorScale.add(Note.A5);
     return notesCMajorScale;
+  }
+
+  private static ArrayList<Float> createNoteTimes() {
+    ArrayList<Float> returnArray = new ArrayList<Float>();
+    returnArray.add(WHOLE_NOTE_DURATION);
+    returnArray.add(HALF_NOTE_DURATION);
+    returnArray.add(QUARTER_NOTE_DURATION);
+    returnArray.add(SIXTEENTH_NOTE_DURATION);
+    returnArray.add(THIRTYSECOND_NOTE_DURATION);
+    return returnArray;
   }
 
   private static ArrayList<Note> createCMajorScale() {
@@ -308,7 +516,7 @@ public class MusicMaker {
 			
 			Random rand = new Random();
 
-			int randomNum = rand.nextInt((noteDuration - THIRTYSECOND_NOTE_DURATION) + 1) + THIRTYSECOND_NOTE_DURATION;
+			int randomNum = rand.nextInt((noteDuration - (int)THIRTYSECOND_NOTE_DURATION) + 1) + (int)THIRTYSECOND_NOTE_DURATION;
 			Note inputNote = getRandomElementFromList(inputScale);
 			play(line, inputNote, randomNum);
 			play(line, Note.REST, restDuration);
@@ -359,10 +567,10 @@ public class MusicMaker {
 	 * @param note The note to be added to the melody.
 	 * @param ms The duration of the note.
 	 */
-    private static void play(SourceDataLine line, Note note, int ms) {
+    private static void play(SourceDataLine line, Note note, float ms) {
         ms = Math.min(ms, Note.SECONDS * 1000);
-        int length = Note.SAMPLE_RATE * ms / 1000;
-        int count = line.write(note.data(), 0, length);
+        float length = Note.SAMPLE_RATE * ms / 1000;
+        float count = line.write(note.data(), 0, (int)length);
         
     }
 
