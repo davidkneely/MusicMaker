@@ -18,13 +18,24 @@ public class MusicMaker {
 
   private static final int SONG_DURATION = 30;
   private static final int REST_DURATION = 0;
-  private static final int WHOLE_NOTE_DURATION = 40000;
-  private static final int MINIMUM_NOTE_DURATION = 100;
+  public static final int SECOND_DURATION = 1000;
+  public static final float TEMPORAL_RATIO = 0.5f;
+  private static final int WHOLE_NOTE_DURATION = Integer.valueOf((int) (SECOND_DURATION/TEMPORAL_RATIO));
   private static final int HALF_NOTE_DURATION = WHOLE_NOTE_DURATION /2;
   private static final int QUARTER_NOTE_DURATION = HALF_NOTE_DURATION/2;
   private static final int EIGTH_NOTE_DURATION = QUARTER_NOTE_DURATION/2;
   private static final int SIXTEENTH_NOTE_DURATION = EIGTH_NOTE_DURATION/2;
   private static final int THIRTYSECOND_NOTE_DURATION = SIXTEENTH_NOTE_DURATION/2;
+
+  // Just hung out with Kyle and demo'd the output.
+
+  // He suggested updating the track to support "Beats on the Seconds. 60 second timer. Not on a boring 60 seconds."
+
+  // Ideas of generated toward making this player
+  // Polyphonic to cluster sound rashes
+  // Against the main melody at a lower volume.
+  // like fractals.
+  // but with more subtlety?
 
   /**
    * Plays a scale of music starting at A.
