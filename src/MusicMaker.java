@@ -16,9 +16,12 @@ import javax.sound.sampled.SourceDataLine;
  */
 public class MusicMaker {
 
+  // will making the range of notes larger make the piece feel pschitzo?
+  // I want three ocatves of range as the input.
+
   private static final int SONG_DURATION = 30;
   private static final int REST_DURATION = 0;
-  public static final int SECOND_DURATION = 1000;
+  public static final int SECOND_DURATION = 5000;
   public static final float TEMPORAL_RATIO = 0.5f;
   private static final int WHOLE_NOTE_DURATION = Integer.valueOf((int) (SECOND_DURATION/TEMPORAL_RATIO));
   private static final int HALF_NOTE_DURATION = WHOLE_NOTE_DURATION /2;
