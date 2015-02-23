@@ -68,12 +68,15 @@ public class MusicMaker {
     //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
 
-  for(int i = 10; i < 20; i++){
+    for(int i = 10; i < 20; i++){
       createMelody(aMajorScale, line);
     }
     //createMelody002(aMajorScale, line);
 
     // maybe add in some standard drum beat???
+
+    // NEXT STEP: WRITE TO OUTPUT FILE
+    // writing to mp3 file: http://www.developer.com/java/other/article.php/2105421/Java-Sound-Capturing-Microphone-Data-into-an-Audio-File.htm
 
     line.drain();
     line.close();
