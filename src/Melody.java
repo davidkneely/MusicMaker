@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Created by davidneely on 2/25/15.
- */
 public class Melody {
 
   ArrayList<Float> notes = new ArrayList<>();
@@ -11,7 +8,7 @@ public class Melody {
 
   public void Melody(){
 
-    //notes.add(currentNote);
+    // notes.add(currentNote);
 
     // the duration
     // the note

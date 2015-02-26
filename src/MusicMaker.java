@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.AudioFormat;
@@ -21,7 +22,6 @@ public class MusicMaker {
   private static final float EIGTH_NOTE_DURATION = QUARTER_NOTE_DURATION/2;
   private static final float SIXTEENTH_NOTE_DURATION = EIGTH_NOTE_DURATION/2;
   private static final float THIRTYSECOND_NOTE_DURATION = SIXTEENTH_NOTE_DURATION/2;
-
   private static final float WHOLE_REST_DURATION = Integer.valueOf((int) (SECOND_DURATION/TEMPORAL_RATIO));
   private static final float HALF_REST_DURATION = WHOLE_REST_DURATION /2;
   private static final float QUARTER_REST_DURATION = HALF_REST_DURATION/2;
@@ -50,6 +50,7 @@ public class MusicMaker {
     line.start();
 
     createMelody(aMajorScale, line);
+    //createArrayOfNotesAndDurations();
 
     line.drain();
     line.close();
@@ -60,152 +61,147 @@ public class MusicMaker {
     ArrayList<Note> loopY = new ArrayList<>(createLoop(aMajorScale));
     ArrayList<Note> loopZ = new ArrayList<>(createLoop(aMajorScale));
 
+    // select note or rest
+    // if(note) select randomNote
+    // select random duration
+    // add to an Array
+
+//    ArrayList<ArrayList<String>> notesAndDurations = new ArrayList<ArrayList<String>>();
+//    ArrayList<String> notes = new ArrayList<>();
+//    ArrayList<String> durations = new ArrayList<>();
+//    notesAndDurations.add(new ArrayList<String>().add("WHOLE"));
+
+    // iterating through the list of lists
+//    for (List<Point> pointList : pointsList) {
+//      if (pointList.size() > 1) {
+//        Point p1 = pointList.get(0);
+//        for (int i = 1; i < pointList.size(); i++) {
+//          Point p2 = pointList.get(i);
+//          int x1 = p1.x;
+//          int y1 = p1.y;
+//          int x2 = p2.x;
+//          int y2 = p2.y;
+//          g.drawLine(x1, y1, x2, y2);
+//          p1 = p2;
+//        }
+//      }
+//    }
+
     // added length variable
-    //float QUARTER_NOTE_DURATION = 100;
+    // float QUARTER_NOTE_DURATION = 100;
+
+    // I want to combine the note and the duration.
+    // They should stand as a single entity.
+    // Then I can play it later.
+    // An array of
 
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopZ){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-
     }
     for(Note note: loopZ){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopZ){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-
     }
     for(Note note: loopZ){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-
     }
   }
 
@@ -385,8 +381,6 @@ public class MusicMaker {
   }
 
   private static ArrayList<Note> createLoop(ArrayList<Note> inputArray){
-
-    // populate a random array
     ArrayList<Note> returnArrayPatternNotes = new ArrayList<>();
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
@@ -396,14 +390,10 @@ public class MusicMaker {
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
-
     return  returnArrayPatternNotes;
-
   }
 
   private static ArrayList<Note> createLoopTimes(ArrayList<Note> inputArray){
-
-    // populate a random array
     ArrayList<Note> returnArrayPatternNotes = new ArrayList<>();
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
@@ -413,9 +403,7 @@ public class MusicMaker {
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
-
     return  returnArrayPatternNotes;
-
   }
 
   private static ArrayList<Note> createAMajorScale() {
@@ -442,7 +430,6 @@ public class MusicMaker {
   }
 
   private static ArrayList<Note> createCMajorScale() {
-
     ArrayList<Note> notesCMajorScale = new ArrayList<Note>();
     notesCMajorScale.add(Note.C4);
     notesCMajorScale.add(Note.D4);
@@ -453,7 +440,6 @@ public class MusicMaker {
     notesCMajorScale.add(Note.B4);
     return notesCMajorScale;
   }
-
 
   private static void setSongPlotline() {
     // Generate the plot of the piece.
@@ -484,10 +470,8 @@ public class MusicMaker {
    */
   private static void playRandomSong(SourceDataLine line, ArrayList<Note> inputScale, int restDuration, int noteDuration, int songDuration) {
 
-		for(int i = 0; i < songDuration; i++){
-			
+		for(int i = 0; i < songDuration; i++) {
 			Random rand = new Random();
-
 			int randomNum = rand.nextInt((noteDuration - (int)THIRTYSECOND_NOTE_DURATION) + 1) + (int)THIRTYSECOND_NOTE_DURATION;
 			Note inputNote = getRandomElementFromList(inputScale);
 			play(line, inputNote, randomNum);
@@ -495,6 +479,11 @@ public class MusicMaker {
 		}
 	}
 
+  /**
+   * Creates a random notes and return them in an array.
+   * @param inputArrayList
+   * @return
+   */
   private static Note getRandomElementFromList(ArrayList<Note> inputArrayList) {
     Note returnNote;
     Random randomGenerator = new Random();
@@ -522,12 +511,11 @@ public class MusicMaker {
    * @param <T> The generic type of the input Enumeration.
    * @return The random element of the input Enumeration.
    */
-	public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
-		
+	public static <T extends Enum<?>> T randomEnum(Class<T> clazz) {
 		Random rand = new Random();
-        int x = rand.nextInt(clazz.getEnumConstants().length);
-        return clazz.getEnumConstants()[x];
-    }
+    int x = rand.nextInt(clazz.getEnumConstants().length);
+    return clazz.getEnumConstants()[x];
+  }
 	
 	/**
 	 * Plays the input Note.
@@ -539,7 +527,6 @@ public class MusicMaker {
         ms = Math.min(ms, Note.SECONDS * 1000);
         float length = Note.SAMPLE_RATE * ms / 1000;
         float count = line.write(note.data(), 0, (int)length);
-        
     }
 
 }
@@ -575,6 +562,9 @@ enum Note {
     }
 }
 
+/**
+ * Sets an array of Notes in C Major.
+ */
 enum NotesCMajor {
 
   /*
