@@ -5,18 +5,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-// command to stop current loop.
-// play diffrent song.
-
-// would like to hook this up to the global happiness project.
-// global consciousness project.
-// feed in random ints from those sensors.
-// see what kind of songs those random ints made...
-
-// another idea to make the program listen to popular music to analyze the note structures that got the most virality.
-// ... creation of the perfectly derivative pop song.
-
-
 /**
  * Generates random music with Java Sound API.
  * @author David Neely
@@ -61,19 +49,7 @@ public class MusicMaker {
     line.open(af, Note.SAMPLE_RATE);
     line.start();
 
-    //playRandomSong(line, aMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
-    //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
-    //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
-
-    //for(int i = 10; i < 20; i++){
-      createMelody(aMajorScale, line);
-    //}
-    //createMelody002(aMajorScale, line);
-
-    // maybe add in some standard drum beat???
-
-    // NEXT STEP: WRITE TO OUTPUT FILE
-    // writing to mp3 file: http://www.developer.com/java/other/article.php/2105421/Java-Sound-Capturing-Microphone-Data-into-an-Audio-File.htm
+    createMelody(aMajorScale, line);
 
     line.drain();
     line.close();
@@ -408,14 +384,6 @@ public class MusicMaker {
     }
   }
 
-  //  private static void playLoop(ArrayList<Note> inputArray) {
-//
-//    for(Note note: inputArray){
-//      play(line, inputNote, randomNum);
-//      play(line, Note.REST, restDuration);
-//    }
-//
-//  }
   private static ArrayList<Note> createLoop(ArrayList<Note> inputArray){
 
     // populate a random array
@@ -430,7 +398,6 @@ public class MusicMaker {
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
 
     return  returnArrayPatternNotes;
-
 
   }
 
@@ -448,7 +415,6 @@ public class MusicMaker {
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
 
     return  returnArrayPatternNotes;
-
 
   }
 
@@ -477,10 +443,6 @@ public class MusicMaker {
 
   private static ArrayList<Note> createCMajorScale() {
 
-    // 7 diatonic triads in any major key
-    // Major, Minor, Minor, Major, Major, Minor, Diminished, Major
-    // tonic, super tonic, median, sub dominant, dominant, sub median, leading tone, tonic
-
     ArrayList<Note> notesCMajorScale = new ArrayList<Note>();
     notesCMajorScale.add(Note.C4);
     notesCMajorScale.add(Note.D4);
@@ -488,7 +450,7 @@ public class MusicMaker {
     notesCMajorScale.add(Note.F4);
     notesCMajorScale.add(Note.G4);
     notesCMajorScale.add(Note.A5);
-    notesCMajorScale.add(Note.B4); // goes down one octave, need to create more notes in the root notes.
+    notesCMajorScale.add(Note.B4);
     return notesCMajorScale;
   }
 
@@ -553,10 +515,6 @@ public class MusicMaker {
       play(line, Note.REST, restDuration);
     }
   }
-
-
-
-
 
   /**
    * Gets random element from input Enumeration.
@@ -1036,46 +994,3 @@ enum NotesFMajor {
     return sin;
   }
 }
-
-/*
- * TODO:
- * Cycle of fifths
- *   perfect cycle of fifths == 12 notes
- *   diatonic cycle of fifths == major/minor scales
- *
- * 
- * Create melodies based on the circle of fifths.
- * 
- *   Determine common patterns based on the fifths. eg. Twinkle Twinkle Little Star.
- *   Set patterns to correspond to.
- *   	Intervals that need to be stuck to in order for the song to be recognizable.
- *   
- * List out all the proper notes based on each scale.
- * 
- *   Remove constants from code.
- * 
- * Importing patterns:
- * 
- *   Create method to import random patterns.
- * 
- * Future updates:
- * 
- *   Filters and envelopes
- *   Eventually would like to support some different kinds of tones.
- *   Attack
- *   Release
- *   Sustain
- *   Decay
- *   Hook code to Ableton or Logic to utilize the synth engine.
- * 
- * Import different kinds of source formats:
- * 
- *   File formats
- *   Weather patterns
- *   Words
- *
- * Cited Sources:
- * 
- * http://stackoverflow.com/questions/7782721/java-raw-audio-output/7782749#7782749
- * http://stackoverflow.com/questions/2064066/does-java-have-built-in-libraries-for-audio-synthesis/2065693#2065693
- */
