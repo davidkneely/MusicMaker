@@ -34,15 +34,12 @@ public class MusicMaker {
   private static final float SIXTEENTH_NOTE_DURATION = EIGTH_NOTE_DURATION/2;
   private static final float THIRTYSECOND_NOTE_DURATION = SIXTEENTH_NOTE_DURATION/2;
 
-  // Just hung out with Kyle and demo'd the output.
-
-  // He suggested updating the track to support "Beats on the Seconds. 60 second timer. Not a boring 60 seconds."
-
-  // Ideas of generated toward making this player
-  // Polyphonic to cluster sound rashes
-  // Against the main melody at a lower volume.
-  // like
-  // but with more subtlety?
+  private static final float WHOLE_REST_DURATION = Integer.valueOf((int) (SECOND_DURATION/TEMPORAL_RATIO));
+  private static final float HALF_REST_DURATION = WHOLE_REST_DURATION /2;
+  private static final float QUARTER_REST_DURATION = HALF_REST_DURATION/2;
+  private static final float EIGTH_REST_DURATION = QUARTER_REST_DURATION/2;
+  private static final float SIXTEENTH_REST_DURATION = EIGTH_REST_DURATION/2;
+  private static final float THIRTYSECOND_REST_DURATION = SIXTEENTH_REST_DURATION/2;
 
   /**
    * Plays a scale of music starting at A.
@@ -68,9 +65,9 @@ public class MusicMaker {
     //playRandomSong(line, cMajorScale, REST_DURATION, WHOLE_NOTE_DURATION, SONG_DURATION);
     //playScale(line, REST_DURATION, WHOLE_NOTE_DURATION);
 
-    for(int i = 10; i < 20; i++){
+    //for(int i = 10; i < 20; i++){
       createMelody(aMajorScale, line);
-    }
+    //}
     //createMelody002(aMajorScale, line);
 
     // maybe add in some standard drum beat???
@@ -92,147 +89,147 @@ public class MusicMaker {
 
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopZ){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopZ){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopZ){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopZ){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, SIXTEENTH_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopX){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
     for(Note note: loopY){
       play(line, note, QUARTER_NOTE_DURATION);
-      play(line, Note.REST, REST_DURATION);
+
     }
   }
 

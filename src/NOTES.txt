@@ -1,4 +1,18 @@
-// CYCLE OF FIFTHS
+////////////// Feedback from Kyle
+
+// Just hung out with Kyle and demo'd the output.
+
+// He suggested updating the track to support "Beats on the Seconds. 60 second timer. Not a boring 60 seconds."
+
+// Ideas of generated toward making this player
+// Polyphonic to cluster sound rashes
+// Against the main melody at a lower volume.
+// like
+// but with more subtlety?
+
+// -------------------------------------
+
+////////////// CYCLE OF FIFTHS
 
 Perfect cycle of fifths
 goes down a perfect fifth every time.
@@ -61,6 +75,8 @@ keeps people's ears captivated for it to resolve.
 keeps people listening for the duration of the chord progression.
 
 dave brubeck's take five is an example of this.
+
+// -------------------------------------
 
 
 // FUTURE PLANNING:
