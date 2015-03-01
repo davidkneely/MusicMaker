@@ -49,11 +49,47 @@ public class MusicMaker {
     line.open(af, Note.SAMPLE_RATE);
     line.start();
 
-    createMelody(aMajorScale, line);
-    //createArrayOfNotesAndDurations();
+    //createMelody(aMajorScale, line);
+    createArrayOfNotesAndDurations(cMajorScale, line, noteTimes);
 
     line.drain();
     line.close();
+  }
+
+  private static void createArrayOfNotesAndDurations(ArrayList<Note> inputScale, SourceDataLine line, ArrayList<Float> inputNoteTimes){
+    ArrayList<Note> loopX = new ArrayList<>(createLoop(inputScale));
+    ArrayList<Note> loopY = new ArrayList<>(createLoop(inputScale));
+    ArrayList<Note> loopZ = new ArrayList<>(createLoop(inputScale));
+    ArrayList<Float> restsLoop = new ArrayList<>(createRandomRestDurations(inputNoteTimes));
+
+
+    // play each one with the proper times
+
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopX.get(i) , restsLoop.get(i));
+    }
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopX.get(i) , restsLoop.get(i));
+    }
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopY.get(i) , restsLoop.get(i));
+    }
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopY.get(i) , restsLoop.get(i));
+    }
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopX.get(i) , restsLoop.get(i));
+    }
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopX.get(i) , restsLoop.get(i));
+    }
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopY.get(i) , restsLoop.get(i));
+    }
+    for(int i = 0; i < restsLoop.size(); i++) {
+      play(line, loopY.get(i) , restsLoop.get(i));
+    }
+
   }
 
   private static void createMelody(ArrayList<Note> aMajorScale, SourceDataLine line) {
@@ -380,6 +416,19 @@ public class MusicMaker {
     }
   }
 
+  private static ArrayList<Float> createRandomRestDurations(ArrayList<Float> inputArray){
+    ArrayList<Float> returnArrayRests = new ArrayList<>();
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    returnArrayRests.add(getRandomRestElementFromList(inputArray));
+    return  returnArrayRests;
+  }
+
   private static ArrayList<Note> createLoop(ArrayList<Note> inputArray){
     ArrayList<Note> returnArrayPatternNotes = new ArrayList<>();
     returnArrayPatternNotes.add(getRandomElementFromList(inputArray));
@@ -490,6 +539,14 @@ public class MusicMaker {
     int index = randomGenerator.nextInt(inputArrayList.size());
     returnNote = inputArrayList.get(index);
     return returnNote;
+  }
+
+  private static Float getRandomRestElementFromList(ArrayList<Float> inputArrayList) {
+    Float returnFloat;
+    Random randomGenerator = new Random();
+    int index = randomGenerator.nextInt(inputArrayList.size());
+    returnFloat = inputArrayList.get(index);
+    return returnFloat;
   }
 
   /**
