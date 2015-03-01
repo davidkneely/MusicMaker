@@ -43,6 +43,7 @@ public class MusicMaker {
     ArrayList<Note> aMajorScale = createAMajorScale();
     ArrayList<Note> cMajorScale = createCMajorScale();
     ArrayList<Float> noteTimes = createNoteTimes();
+    ArrayList<Float> restTimes = createRestTimes();
 
     final AudioFormat af = new AudioFormat(Note.SAMPLE_RATE, 8, 1, true, true);
     SourceDataLine line = AudioSystem.getSourceDataLine(af);
@@ -50,44 +51,59 @@ public class MusicMaker {
     line.start();
 
     //createMelody(aMajorScale, line);
-    createArrayOfNotesAndDurations(cMajorScale, line, noteTimes);
+    createArrayOfNotesAndDurations(cMajorScale, line, noteTimes, restTimes);
 
     line.drain();
     line.close();
   }
 
-  private static void createArrayOfNotesAndDurations(ArrayList<Note> inputScale, SourceDataLine line, ArrayList<Float> inputNoteTimes){
+  private static void createArrayOfNotesAndDurations(ArrayList<Note> inputScale, SourceDataLine line, ArrayList<Float> inputNoteTimes,
+                                                      ArrayList<Float> inputRestTimes) {
     ArrayList<Note> loopX = new ArrayList<>(createLoop(inputScale));
     ArrayList<Note> loopY = new ArrayList<>(createLoop(inputScale));
     ArrayList<Note> loopZ = new ArrayList<>(createLoop(inputScale));
-    ArrayList<Float> restsLoop = new ArrayList<>(createRandomRestDurations(inputNoteTimes));
+    ArrayList<Float> restsLoopX = new ArrayList<>(createRandomRestDurations(inputNoteTimes));
+    ArrayList<Float> restsLoopY = new ArrayList<>(createRandomRestDurations(inputNoteTimes));
+    ArrayList<Float> restsLoopZ = new ArrayList<>(createRandomRestDurations(inputNoteTimes));
+    ArrayList<Float> restsDurationsX = new ArrayList<>(createRandomRestDurations(inputRestTimes));
+    ArrayList<Float> restsDurationsY = new ArrayList<>(createRandomRestDurations(inputRestTimes));
+    ArrayList<Float> restsDurationsZ = new ArrayList<>(createRandomRestDurations(inputRestTimes));
 
+    ArrayList<Float> restsLoop = new ArrayList<>(createRandomRestDurations(inputNoteTimes));
 
     // play each one with the proper times
 
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoop.get(i));
+      play(line, loopX.get(i) , restsLoopX.get(i));
+      play(line, Note.REST, restsDurationsX.get(i)); // plays the space between the notes
     }
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoop.get(i));
+      play(line, loopX.get(i) , restsLoopX.get(i));
+      play(line, Note.REST, restsDurationsX.get(i));
     }
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoop.get(i));
+      play(line, loopY.get(i) , restsLoopY.get(i));
+      play(line, Note.REST, restsDurationsY.get(i));
     }
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoop.get(i));
+      play(line, loopY.get(i) , restsLoopY.get(i));
+      play(line, Note.REST, restsDurationsY.get(i));
     }
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoop.get(i));
+      play(line, loopX.get(i) , restsLoopX.get(i));
+      play(line, Note.REST, restsDurationsX.get(i));
     }
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoop.get(i));
+      play(line, loopX.get(i) , restsLoopX.get(i));
+      play(line, Note.REST, restsDurationsX.get(i));
     }
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoop.get(i));
+      play(line, loopY.get(i) , restsLoopY.get(i));
+      play(line, Note.REST, restsDurationsY.get(i));
     }
     for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoop.get(i));
+      play(line, loopY.get(i) , restsLoopY.get(i));
+      play(line, Note.REST, restsDurationsY.get(i));
     }
 
   }
@@ -475,6 +491,16 @@ public class MusicMaker {
     returnArray.add(QUARTER_NOTE_DURATION);
     returnArray.add(SIXTEENTH_NOTE_DURATION);
     returnArray.add(THIRTYSECOND_NOTE_DURATION);
+    return returnArray;
+  }
+
+  private static ArrayList<Float> createRestTimes() {
+    ArrayList<Float> returnArray = new ArrayList<Float>();
+    returnArray.add(WHOLE_REST_DURATION);
+    returnArray.add(HALF_REST_DURATION);
+    returnArray.add(QUARTER_REST_DURATION);
+    returnArray.add(SIXTEENTH_REST_DURATION);
+    returnArray.add(THIRTYSECOND_REST_DURATION);
     return returnArray;
   }
 
