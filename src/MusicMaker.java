@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.AudioFormat;
@@ -31,7 +30,7 @@ public class MusicMaker {
 
   /**
    * Plays a scale of music starting at A.
-   * @param args The arguments. Not implemented.
+   * @param args Ignored.
    */
 	public static void main(String[] args) throws LineUnavailableException {
 
@@ -73,37 +72,23 @@ public class MusicMaker {
 
     // play each one with the proper times
 
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoopX.get(i));
-      play(line, Note.REST, restsDurationsX.get(i)); // plays the space between the notes
-    }
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoopX.get(i));
-      play(line, Note.REST, restsDurationsX.get(i));
-    }
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoopY.get(i));
-      play(line, Note.REST, restsDurationsY.get(i));
-    }
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoopY.get(i));
-      play(line, Note.REST, restsDurationsY.get(i));
-    }
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoopX.get(i));
-      play(line, Note.REST, restsDurationsX.get(i));
-    }
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopX.get(i) , restsLoopX.get(i));
-      play(line, Note.REST, restsDurationsX.get(i));
-    }
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoopY.get(i));
-      play(line, Note.REST, restsDurationsY.get(i));
-    }
-    for(int i = 0; i < restsLoop.size(); i++) {
-      play(line, loopY.get(i) , restsLoopY.get(i));
-      play(line, Note.REST, restsDurationsY.get(i));
+    for (int j = 2; j > 0; j--) {
+      for (int i = 0; i < restsLoop.size(); i++) {
+        play(line, loopX.get(i), restsLoopX.get(i));
+        //play(line, Note.REST, restsDurationsX.get(i)); // plays the space between the notes
+      }
+      for (int i = 0; i < restsLoop.size(); i++) {
+        play(line, loopX.get(i), restsLoopX.get(i));
+        //play(line, Note.REST, restsDurationsX.get(i));
+      }
+      for (int i = 0; i < restsLoop.size(); i++) {
+        play(line, loopY.get(i), restsLoopY.get(i));
+        //play(line, Note.REST, restsDurationsY.get(i));
+      }
+      for (int i = 0; i < restsLoop.size(); i++) {
+        play(line, loopY.get(i), restsLoopY.get(i));
+        //play(line, Note.REST, restsDurationsY.get(i));
+      }
     }
 
   }
